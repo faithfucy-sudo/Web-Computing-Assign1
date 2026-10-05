@@ -1,0 +1,84 @@
+/*GENERAL STYLES*/
+
+body {
+    background-color: #F6EEE3;
+    color: #6B584D;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+/*TITLES*/
+
+.page-title {
+    color: #3F281D;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.section-title {
+    color: #3F281D;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+/*Card Containers*/
+
+.card {
+    background-color: #FFFDF8;
+    border: 1px solid #E6D8C8;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+
+/*Interactive Buttons*/
+
+.button {
+    background-color: #8A5A3B;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+
+/*Normal Body Text*/
+
+.normal-text {
+    color: #6B584D;
+}
+
+/*Navigation Bar Styles */
+
+.navbar {
+    background-color: #FFFDF8;
+    border-bottom: 1px solid #E6D8C8;
+    padding: 15px 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo a {
+    color: #3F281D;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #6B584D;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #8A5A3B;
+}

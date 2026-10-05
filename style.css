@@ -14,12 +14,14 @@ body {
     color: #3F281D;
     font-size: 40px;
     font-weight: bold;
+    font-family: Georgia, serif;
 }
 
 .section-title {
     color: #3F281D;
     font-size: 28px;
     font-weight: bold;
+    font-family: Georgia, serif;
 }
 
 
@@ -36,13 +38,22 @@ body {
 /*Interactive Buttons*/
 
 .button {
-    background-color: #8A5A3B;
-    color: white;
-    border: none;
-    border-radius: 20px;
     padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
 }
 
+.button-brown {
+    background-color: brown;
+    color: white;
+}
+
+.button-white {
+    background-color: white;
+    color: brown;
+    border: 1px solid brown;
+}
 
 /*Normal Body Text*/
 

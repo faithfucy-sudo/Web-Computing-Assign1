@@ -1,9 +1,67 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
-    <title>Book an Appointment</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking | Paws & Whiskers</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Book an Appointment</h1>
+    <main>
+        <h1>Book an Appointment</h1>
+        <p>Schedule a grooming session for your beloved pet!</p>
+    </main>
+
+    <form>
+        <div class="form-group">
+            <label for="owner-name">Name:</label>
+            <input type="text" id="owner-name" name="owner-name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone-number">Phone Number:</label>
+            <input type="tel" id="phone-number" name="phone-number" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pet-type">Pet Type:</label>
+            <select id="pet-type" name="pet-type" required>
+                <option value="">Select a pet type</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="rabbit">Rabbit</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="pet-name">Pet Name:</label>
+            <input type="text" id="pet-name" name="pet-name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="package">Select Package:</label>
+            <select id="package" name="package" required>
+                <option value="">Select a package</option>
+                <option value="bronze">Bronze Package</option>
+                <option value="silver">Silver Package</option>
+                <option value="gold">Gold Package</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Preferred Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+
+        <div class="form-group">
+            <label for="time">Preferred Time:</label>
+            <input type="time" id="time" name="time" required>
+        </div>
+
+        <button type="button" class="button">Book Appointment</button>
+    </form>
+    
 </body>
+</html>

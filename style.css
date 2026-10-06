@@ -1,12 +1,18 @@
 /*GENERAL STYLES*/
 
-body {
+html, body {
     background-color: #F6EEE3;
     color: #6B584D;
     margin: 0;
+    padding:0;
+    width: 100%;
+    min-height: 100%;
     font-family: Arial, sans-serif;
 }
 
+* {
+    box-sizing: border-box;
+}
 
 /*TITLES*/
 
@@ -64,16 +70,22 @@ body {
 /*Navigation Bar Styles */
 
 .navbar {
-    background-color: #FFFDF8;
-    border-bottom: 1px solid #E6D8C8;
+    width: 100%;
+    height: 90px;
     padding: 15px 40px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #FFFDF9;
 }
 
-.nav-logo a {
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-title a {
     color: #3F281D;
     text-decoration: none;
     font-size: 24px;
@@ -91,5 +103,11 @@ body {
 }
 
 .nav-links a:hover {
-    color: #8A5A3B;
+    color: #B52A2A;
+}
+
+.nav-image-logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
 }

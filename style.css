@@ -1,10 +1,10 @@
-/*GENERAL STYLES*/
+/* GENERAL STYLES */
 
 html, body {
     background-color: #F6EEE3;
     color: #6B584D;
     margin: 0;
-    padding:0;
+    padding: 0;
     width: 100%;
     min-height: 100%;
     font-family: Arial, sans-serif;
@@ -14,7 +14,8 @@ html, body {
     box-sizing: border-box;
 }
 
-/*TITLES*/
+
+/* TITLES */
 
 .page-title {
     color: #3F281D;
@@ -31,7 +32,7 @@ html, body {
 }
 
 
-/*Card Containers*/
+/* CARD CONTAINERS */
 
 .card {
     background-color: #FFFDF8;
@@ -41,13 +42,14 @@ html, body {
 }
 
 
-/*Interactive Buttons*/
+/* INTERACTIVE BUTTONS */
 
 .button {
     padding: 10px 20px;
     border-radius: 8px;
     text-decoration: none;
     display: inline-block;
+    margin-right: 5px;
 }
 
 .button-brown {
@@ -61,13 +63,15 @@ html, body {
     border: 1px solid brown;
 }
 
-/*Normal Body Text*/
+
+/* NORMAL BODY TEXT */
 
 .normal-text {
     color: #6B584D;
 }
 
-/*Navigation Bar Styles */
+
+/* NAVIGATION BAR */
 
 .navbar {
     width: 100%;
@@ -95,6 +99,8 @@ html, body {
 .nav-links {
     display: flex;
     gap: 25px;
+    margin-left: auto;
+    margin-right: 40px;
 }
 
 .nav-links a {
@@ -110,4 +116,14 @@ html, body {
     width: 55px;
     height: 55px;
     object-fit: contain;
+}
+
+
+/* NORMAL SECTIONS */
+
+.section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

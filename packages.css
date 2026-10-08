@@ -32,44 +32,6 @@
     border-radius: 15px;
 
     padding: 30px;
-
-    text-align: center;
-}
-
-.package-card h2 {
-    color: #3F281D;
-    font-size: 26px;
-}
-
-.package-card h1 {
-    color: brown;
-    font-size: 36px;
-    margin: 15px 0;
-}
-
-.package-card h3 {
-    color: #6B584D;
-}
-
-.package-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-    object-position: center 25%;
-    border-radius: 10px;
-    display: block;
-}
-
-/* MOST POPULAR PACKAGE */
-
-/* PACKAGE CARDS */
-
-.package-card {
-    width: 30%;
-    background-color: #FFFDF8;
-    border: 1px solid #E6D8C8;
-    border-radius: 15px;
-    padding: 30px;
     text-align: center;
 
     display: flex;

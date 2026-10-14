@@ -1,55 +1,73 @@
-/* GENERAL STYLES */
+/*General Styles*/
 
-html, body {
+html,
+body {
     background-color: #F6EEE3;
     color: #6B584D;
+
     margin: 0;
     padding: 0;
+
     width: 100%;
     min-height: 100%;
-    font-family: Arial, sans-serif;
+
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 * {
     box-sizing: border-box;
 }
 
+img {
+    max-width: 100%;
+}
 
-/* TITLES */
+
+/* Page Title */
 
 .page-title {
     color: #3F281D;
+
+    font-family: Georgia, "Times New Roman", serif;
     font-size: 40px;
     font-weight: bold;
-    font-family: Georgia, serif;
 }
+
+
+/* Section Title */
 
 .section-title {
     color: #3F281D;
+
+    font-family: Georgia, "Times New Roman", serif;
     font-size: 28px;
     font-weight: bold;
-    font-family: Georgia, serif;
 }
 
 
-/* CARD CONTAINERS */
+/*Card Container*/
 
 .card {
     background-color: #FFFDF8;
+
     border: 1px solid #E6D8C8;
     border-radius: 15px;
+
     padding: 20px;
 }
 
 
-/* INTERACTIVE BUTTONS */
+/* Buttons */
 
 .button {
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
     display: inline-block;
+
+    padding: 10px 20px;
     margin-right: 5px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
 }
 
 .button-brown {
@@ -60,120 +78,168 @@ html, body {
 .button-white {
     background-color: white;
     color: brown;
+
     border: 1px solid brown;
 }
 
 
-/* NORMAL BODY TEXT */
+/* Body Text */
 
 .normal-text {
     color: #6B584D;
 }
 
 
-/* NAVIGATION BAR */
+/* Navigation Bar */
 
 .navbar {
-    width: 100%;
-    height: 90px;
-    padding: 15px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    width: 100%;
+    min-height: 90px;
+
+    padding: 15px 40px;
+
     background-color: #FFFDF9;
 }
+
+
+/* Logo and brand */
 
 .nav-brand {
     display: flex;
     align-items: center;
+
     gap: 12px;
+
+    flex-shrink: 0;
+}
+
+.nav-image-logo img {
+    display: block;
+
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
 }
 
 .nav-title a {
     color: #3F281D;
+
     text-decoration: none;
+
+    font-family: Georgia, "Times New Roman", serif;
     font-size: 24px;
     font-weight: bold;
 }
 
+
+/* Navigation links */
+
 .nav-links {
     display: flex;
+    align-items: center;
+
     gap: 25px;
+
     margin-left: auto;
     margin-right: 40px;
 }
 
 .nav-links a {
     color: #6B584D;
+
     text-decoration: none;
+
+    transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
-<<<<<<< HEAD
     color: #8A5A3B;
 }
 
-/*Booking Page*/
 
-.booking-page {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 0 20px;
+/* General Section */
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
 }
 
-.booking-form {
-    margin-top: 25px;
-}
 
-.booking-form .section-title {
-    margin-top: 0;
-}
+/* hared Form Styles */
 
-/*Form Fields*/
 .form-group {
-    margin-bottom: 20px;
+    min-width: 0;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
     font-weight: bold;
 }
 
 .form-group input,
-.form-group select {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px;
-    border: 1px solid #E6D8C8;
-    border-radius: 8px;
-    background-color: #FFFDF8;
-    color: #3F281D;
-    font: inherit;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    outline: 2px solid #8A5A3B;
-    outline-offset: 2px;
-}
-=======
-    color: #B52A2A;
-}
-
-.nav-image-logo img {
-    width: 55px;
-    height: 55px;
-    object-fit: contain;
+.form-group select,
+.form-group textarea {
+    max-width: 100%;
+    font-family: inherit;
 }
 
 
-/* NORMAL SECTIONS */
+/* Responsive Styles */
 
-.section {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+@media (max-width: 900px) {
+
+    .navbar {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .nav-links {
+        gap: 16px;
+        margin-right: 20px;
+    }
+
 }
->>>>>>> 35dffeebd71ec7622d835244677544be910b0a0e
+
+@media (max-width: 600px) {
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 14px;
+
+        padding: 14px 16px;
+    }
+
+    .nav-title a {
+        font-size: 21px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+
+        width: 100%;
+
+        gap: 12px;
+
+        margin: 0;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .page-title {
+        font-size: 32px;
+    }
+
+    .section-title {
+        font-size: 24px;
+    }
+
+}

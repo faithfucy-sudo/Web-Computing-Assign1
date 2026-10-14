@@ -1,34 +1,310 @@
 <!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Paws & Whiskers</title>
+    <!-- Shared website styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Contact page styles -->
+    <link rel="stylesheet" href="contact.css">
+</head>
 
-<html>
-    <head>
-        <title>Contact Us</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+<body class="contact-page">
+        <!-- Navigation Bar: existing design preserved -->
+    <nav class="navbar" aria-label="Main navigation">
+<div class="nav-brand">
+    <!-- Website Logo -->
+    <a href="index.html" class="nav-image-logo">
+        <img src="Paws & Whiskers.png" alt="Paws & Whiskers.png">
+    </a>
+    <!-- Website Name -->
+    <div class="nav-title">
+        <a href="index.html">Paws &amp; Whiskers</a>
+    </div>
+</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="service.html">Services</a>
+            <a href="packages.html">Packages</a>
+            <a href="groomers.html">Groomers</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="booking.html" class="button button-brown">
+            Book Now
+        </a>
+    </nav>
 
-    <body>
-        <nav class="navbar">
 
-            <div class="nav-brand">
-                <div class="nav-image-logo">
-                    <img src="Paws & Whiskers.png" alt="Paws & Whiskers Logo">
+    <!-- Main Contact -->
+
+    <main class="contact-main">
+        <!-- Page Heading -->
+        <section class="contact-hero">
+            <div class="contact-heading">
+                <div class="contact-title-row">
+                    <span class="contact-title-paw" aria-hidden="true">
+                        🐾
+                    </span>
+                    <h1>Contact Us</h1>
                 </div>
-
-                <div class="nav-title">
-                    <a href="index.html">Paws & Whiskers</a>
-                </div>
+                <p>
+                    We'd love to hear from you. Get in touch for enquiries,
+                    support or feedback.
+                </p>
             </div>
 
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="service.html">Services</a>
-                <a href="packages.html">Packages</a>
-                <a href="groomers.html">Groomers</a>
-                <a href="contact.html">Contact</a>
+
+            <!-- Decorative Pet Image -->
+            <img
+                src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=500&q=85"
+                alt="Cat relaxing comfortably"
+                class="contact-cat"
+            >
+
+        </section>
+
+
+        <div class="contact-content">
+            <section class="contact-form-card">
+                <div class="contact-card-heading">
+                    <span class="contact-small-icon" aria-hidden="true">
+                        ✉
+                    </span>
+                    <div>
+                        <h2>Send Us a Message</h2>
+                        <p>
+                            Have a question? We'd be happy to help.
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- Contact Form -->
+                <form class="contact-form" id="contactForm">
+                    <!-- Name -->
+                    <div class="contact-form-group">
+                        <label for="contact-name">
+                            Your Name <span>*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="contact-name"
+                            name="name"
+                            placeholder="Enter your name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="contact-form-group">
+                        <label for="contact-email">
+                            Your Email <span>*</span>
+                        </label>
+                        <input
+                            type="email"
+                            id="contact-email"
+                            name="email"
+                            placeholder="Enter your email"
+                            autocomplete="email"
+                            required
+                        >
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="contact-form-group">
+                        <label for="contact-subject">
+                            Subject <span>*</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="contact-subject"
+                            name="subject"
+                            placeholder="What would you like to ask us?"
+                            required
+                        >
+                    </div>
+
+
+                    <!-- Message -->
+                    <div class="contact-form-group">
+                        <label for="contact-message">
+                            Message <span>*</span>
+                        </label>
+                        <textarea
+                            id="contact-message"
+                            name="message"
+                            placeholder="Write your message here..."
+                            rows="6"
+                            required
+                        ></textarea>
+                    </div>
+
+
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        class="contact-submit"
+                    >
+                        <span aria-hidden="true">✉</span>
+                        Send Message
+                    </button>
+
+                    <script>
+                        document.getElementById("contactForm").addEventListener("submit", function(event) {
+                            event.preventDefault();
+
+                            alert("Thank you! Your message has been sent to Paws & Whiskers. We will get back to you soon.");
+                    
+                            this.reset();
+                        });
+                    </script>
+
+
+                    <p class="contact-form-note">
+                        * Required fields. This is a demonstration form;
+                        messages are not sent to a real email address.
+                    </p>
+                </form>
+            </section>
+
+
+
+            <div class="contact-right">
+                <section class="contact-info-card">
+                    <div class="contact-section-heading">
+                        <span aria-hidden="true">🐾</span>
+                        <h2>Our Store Information</h2>
+                    </div>
+
+                    <div class="contact-info-grid">
+                        <!-- Address -->
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon" aria-hidden="true">
+                                📍
+                            </div>
+                            <div class="contact-info-text">
+                                <h3>Address</h3>
+                                <p>
+                                    123, Jalan ABC, Taman XYZ, 12345 Petaling Jaya, Selangor, Malaysia
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <!-- Phone -->
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon" aria-hidden="true">
+                                📞
+                            </div>
+                            <div class="contact-info-text">
+                                <h3>Phone</h3>
+                                <p>
+                                    60-12-3456789
+                                </p>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Email -->
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon" aria-hidden="true">
+                                ✉️
+                            </div>
+                            <div class="contact-info-text">
+                                <h3>Email</h3>
+                                <p>
+                                    pawsnwhiskers@example.com
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <!-- Business Hours -->
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon" aria-hidden="true">
+                                🕒
+                            </div>
+                            <div class="contact-info-text">
+                                <h3>Business Hours</h3>
+                                <p>Monday – Sunday</p>
+                                <p>9:00 AM – 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="contact-map">
+                    <div class="contact-section-heading">
+                        <span aria-hidden="true">📍</span>
+                        <h2>Find Us Here</h2>
+                    </div>
+
+                    <div class="contact-map-frame">
+                        <iframe
+                            src="https://www.google.com/maps?q=Petaling+Jaya%2C+Selangor&output=embed"
+                            title="Example map showing Petaling Jaya, Selangor"
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                    <p class="contact-map-note">
+                        Example location only. Update the map with your
+                        actual salon address.
+                    </p>
+                </section>
+
+
+                <section class="contact-resources">
+                    <div class="resource-icon" aria-hidden="true">
+                        🔗
+                    </div>
+                    <div class="resource-content">
+                        <h2>Useful Resources</h2>
+                        <p>
+                            Learn more about pet care and animal welfare.
+                        </p>
+                        <a
+                            href="https://www.dvs.gov.my/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Department of Veterinary Services Malaysia
+
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </section>
             </div>
+        </div>
+    </main>
 
-            <a href="booking.html" class="button button-brown">Book Now</a>
 
-        </nav>
-    </body>
+    <footer class="contact-footer">
+        <p>
+            &copy; 2026 Paws & Whiskers. All rights reserved.
+        </p>
+    </footer>
+    <script>
+        const contactForm = document.getElementById("contactForm");
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return;
+            }
+            const customerName =
+                document.getElementById("contact-name").value.trim();
+            alert(
+                "Thank you, " + customerName + "!\n\n" +
+                "Your message has been submitted successfully.\n\n" +
+                "Please note that this is a demonstration form. " +
+                "Your message has not been sent to a real email address."
+            );
+            contactForm.reset();
+        });
+    </script>
+</body>
 </html>

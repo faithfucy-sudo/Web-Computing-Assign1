@@ -109,6 +109,7 @@ html, body {
 }
 
 .nav-links a:hover {
+<<<<<<< HEAD
     color: #8A5A3B;
 }
 
@@ -156,3 +157,23 @@ html, body {
     outline: 2px solid #8A5A3B;
     outline-offset: 2px;
 }
+=======
+    color: #B52A2A;
+}
+
+.nav-image-logo img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+}
+
+
+/* NORMAL SECTIONS */
+
+.section {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+>>>>>>> 35dffeebd71ec7622d835244677544be910b0a0e

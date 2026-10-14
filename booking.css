@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*BOOKING PAGE STYLING*/
 
 body {
@@ -100,11 +101,41 @@ body {
     color: #503626;
     font-size: 13px;
     font-weight: 600;
+=======
+/* BOOKING PAGE */
+
+.booking-page {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.booking-form {
+    margin-top: 25px;
+}
+
+.booking-form .section-title {
+    margin-top: 0;
+}
+
+
+/* FORM FIELDS */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+>>>>>>> 35dffeebd71ec7622d835244677544be910b0a0e
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
+<<<<<<< HEAD
     min-width: 0;
     height: 39px;
     box-sizing: border-box;
@@ -120,10 +151,23 @@ body {
 .form-group input::placeholder {
     color: #b5a79a;
     opacity: 1;
+=======
+    box-sizing: border-box;
+    padding: 12px;
+
+    border: 1px solid #E6D8C8;
+    border-radius: 8px;
+
+    background-color: #FFFDF8;
+    color: #3F281D;
+
+    font: inherit;
+>>>>>>> 35dffeebd71ec7622d835244677544be910b0a0e
 }
 
 .form-group input:focus,
 .form-group select:focus {
+<<<<<<< HEAD
     outline: none;
     border-color: #a67a55;
     box-shadow: 0 0 0 2px rgba(166, 122, 85, 0.12);
@@ -412,3 +456,8 @@ body {
         padding: 18px 14px;
     }
 }
+=======
+    outline: 2px solid #8A5A3B;
+    outline-offset: 2px;
+}
+>>>>>>> 35dffeebd71ec7622d835244677544be910b0a0e

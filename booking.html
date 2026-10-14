@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Booking | Paws &amp; Whiskers</title>
+<head>
+    <title>Booking - Paws &amp; Whiskers</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="booking.css">
 </head>
 
 <body>
-<<<<<<< HEAD
-    <!-- Shared navigation -->
+
+    <!-- Navigation Bar -->
     <nav class="navbar" aria-label="Main navigation">
-        <div class="nav-logo">
-            <a href="index.html">Paws &amp; Whiskers</a>
+
+        <div class="nav-brand">
+            <div class="nav-image-logo">
+                <img src="Paws & Whiskers.png" alt="Paws & Whiskers Logo">
+            </div>
+
+            <div class="nav-title">
+                <a href="index.html">Paws &amp; Whiskers</a>
+            </div>
         </div>
 
         <div class="nav-links">
@@ -25,123 +30,168 @@
             <a href="booking.html" aria-current="page">Booking</a>
             <a href="contact.html">Contact</a>
         </div>
+
+        <a href="booking.html" class="button button-brown">Book Now</a>
+
     </nav>
-=======
-    <nav class="navbar">
 
-            <div class="nav-brand">
-                <div class="nav-image-logo">
-                    <img src="Paws & Whiskers.png" alt="Paws & Whiskers Logo">
-                </div>
 
-                <div class="nav-title">
-                    <a href="index.html">Paws & Whiskers</a>
-                </div>
-            </div>
-
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="service.html">Services</a>
-                <a href="packages.html">Packages</a>
-                <a href="groomers.html">Groomers</a>
-                <a href="contact.html">Contact</a>
-            </div>
-
-            <a href="booking.html" class="button button-brown">Book Now</a>
-
-        </nav>
->>>>>>> 257a7a94fdbf0f5182bb264e4dfaa2979033e43a
-
-    <main class="booking-page">
+    <!-- Page Heading -->
+    <header class="booking-header">
         <h1 class="page-title">Book an Appointment</h1>
+        <p>Schedule a grooming session for your beloved pet.</p>
+    </header>
 
-        <p class="normal-text">
-            Schedule a grooming session for your beloved pet.
-        </p>
 
-        <form class="card booking-form" aria-describedby="booking-note">
+    <!-- Main Booking Content -->
+    <main class="booking-container">
+
+        <!-- Left Column: Booking Form -->
+        <section class="booking-card">
+
             <h2 class="section-title">Appointment Details</h2>
 
-            <p id="booking-note" class="normal-text">
-                All fields are required. This is a practice form;
-                no appointment will be reserved or sent yet.
+            <p class="booking-description" id="booking-note">
+                Fill in your details to arrange a grooming session.
+                All fields are required.
             </p>
 
-            <!-- Owner name -->
-            <div class="form-group">
-                <label for="owner-name">Owner Name</label>
-                <input
-                    type="text"
-                    id="owner-name"
-                    name="owner-name"
-                    autocomplete="name"
-                    required
+            <form id="booking-form" aria-describedby="booking-note">
+
+                <div class="booking-form-grid">
+
+                    <div class="form-group">
+                        <label for="owner-name">Owner Name *</label>
+                        <input
+                            type="text"
+                            id="owner-name"
+                            name="owner-name"
+                            placeholder="Enter your name"
+                            autocomplete="name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Contact Phone *</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="e.g. 012-3456789"
+                            autocomplete="tel"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pet-type">Pet Type *</label>
+                        <select id="pet-type" name="pet-type" required>
+                            <option value="">Select pet type</option>
+                            <option value="dog">Dog</option>
+                            <option value="cat">Cat</option>
+                            <option value="rabbit">Rabbit</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pet-name">Pet Name *</label>
+                        <input
+                            type="text"
+                            id="pet-name"
+                            name="pet-name"
+                            placeholder="Enter pet name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="package">Selected Package *</label>
+                        <select id="package" name="package" required>
+                            <option value="">Select a package</option>
+                            <option value="bronze">Bronze Package - RM50</option>
+                            <option value="silver">Silver Package - RM80</option>
+                            <option value="gold">Gold Package - RM120</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="date">Preferred Date *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="time">Preferred Time Slot *</label>
+                        <select id="time" name="time" required>
+                            <option value="">Select time slot</option>
+                            <option value="09:00">9:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">1:00 PM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="15:00">3:00 PM</option>
+                            <option value="16:00">4:00 PM</option>
+                            <option value="17:00">5:00 PM</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <p class="booking-disclaimer">
+                    Please check your details before submitting.
+                    This demonstration form does not reserve an actual appointment.
+                </p>
+
+                <button type="submit" class="button button-brown booking-submit">
+                    Book Appointment
+                </button>
+
+            </form>
+        </section>
+
+
+        <!-- Right Column: Puppy Image and Notes -->
+        <aside class="booking-sidebar">
+
+            <section class="booking-image-card">
+
+                <div class="booking-image-text">
+                    <h2>We can't wait to see you!</h2>
+                    <p>Your pet deserves a little extra pampering.</p>
+                </div>
+
+                <img
+                    src="booking_pet.png"
+                    alt="Happy golden puppy wrapped in a towel after grooming"
+                    class="booking-pet-image"
                 >
-            </div>
 
-            <!-- Contact phone -->
-            <div class="form-group">
-                <label for="phone">Contact Phone</label>
-                <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    autocomplete="tel"
-                    required
-                >
-            </div>
+            </section>
 
-            <!-- Pet type -->
-            <div class="form-group">
-                <label for="pet-type">Pet Type</label>
-                <select id="pet-type" name="pet-type" required>
-                    <option value="">Choose a pet type</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="rabbit">Rabbit</option>
-                </select>
-            </div>
+            <section class="booking-notes">
+                <h2>Important Notes</h2>
 
-            <!-- Pet name -->
-            <div class="form-group">
-                <label for="pet-name">Pet Name</label>
-                <input
-                    type="text"
-                    id="pet-name"
-                    name="pet-name"
-                    required
-                >
-            </div>
+                <ul>
+                    <li>Please arrive 10 minutes before your appointment.</li>
+                    <li>Bring your pet's vaccination record if required.</li>
+                    <li>Inform us of any special care requirements.</li>
+                    <li>Your appointment request is not a confirmed reservation.</li>
+                </ul>
+            </section>
 
-            <!-- Package -->
-            <div class="form-group">
-                <label for="package">Selected Package</label>
-                <select id="package" name="package" required>
-                    <option value="">Choose a package</option>
-                    <option value="bronze">Bronze Package</option>
-                    <option value="silver">Silver Package</option>
-                    <option value="gold">Gold Package</option>
-                </select>
-            </div>
+        </aside>
 
-            <!-- Preferred date -->
-            <div class="form-group">
-                <label for="date">Preferred Date</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-
-            <!-- Preferred time -->
-            <div class="form-group">
-                <label for="time">Preferred Time</label>
-                <input type="time" id="time" name="time" required>
-            </div>
-
-            <!-- Visual-only button for now -->
-            <button type="button" class="button">
-                Book Appointment
-            </button>
-        </form>
     </main>
+
+
+    <!-- Booking Confirmation -->
+    <section class="booking-result-container" aria-label="Booking result">
+        <div id="booking-result" aria-live="polite"></div>
+    </section>
+
+
+    <script src="booking.js"></script>
 
 </body>
 </html>

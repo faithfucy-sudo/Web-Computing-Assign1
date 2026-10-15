@@ -1,34 +1,228 @@
 <!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Groomers | Paws &amp; Whiskers</title>
 
-<html>
-    <head>
-        <title>Our Groomers</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="groomers.css">
+</head>
 
-    <body>
-        <nav class="navbar">
+<body class="groomers-page">
 
-            <div class="nav-brand">
-                <div class="nav-image-logo">
-                    <img src="Paws & Whiskers.png" alt="Paws & Whiskers Logo">
-                </div>
+    <!-- Navigation -->
+      <nav class="navbar" aria-label="Main navigation">
+<div class="nav-brand">
+    <!-- Website Logo -->
+    <a href="index.html" class="nav-image-logo">
+        <img src="Paws & Whiskers.png" alt="Paws & Whiskers.png">
+    </a>
+    <!-- Website Name -->
+    <div class="nav-title">
+        <a href="index.html">Paws &amp; Whiskers</a>
+    </div>
+</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="service.html">Services</a>
+            <a href="packages.html">Packages</a>
+            <a href="groomers.html">Groomers</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <a href="booking.html" class="button button-brown">
+            Book Now
+        </a>
+    </nav>
 
-                <div class="nav-title">
-                    <a href="index.html">Paws & Whiskers</a>
-                </div>
+
+    <!-- Main Content -->
+    <main class="groomers-main">
+
+        <!-- Page Heading -->
+        <section class="groomers-heading">
+            <div class="groomers-heading-title">
+                <span aria-hidden="true">🐾</span>
+                <h1>Meet Our Groomers</h1>
             </div>
 
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="service.html">Services</a>
-                <a href="packages.html">Packages</a>
-                <a href="groomers.html">Groomers</a>
-                <a href="contact.html">Contact</a>
-            </div>
+            <p>
+                Our professional and caring team are passionate about
+                pets and their well-being.
+            </p>
+        </section>
 
-            <a href="booking.html" class="button button-brown">Book Now</a>
 
-        </nav>
-    </body>
+        <!-- Groomer Profiles -->
+        <section class="groomers-grid" aria-label="Our grooming team">
+
+        <!-- Groomer 1 -->
+            <article class="groomer-card">
+                <img
+                    class="groomer-photo"
+                    src="sophie.jpg"
+                    alt="Sophie Wong with a tabby cat"
+                    loading="lazy"
+                >
+
+                <div class="groomer-details">
+                    <h2>Sophie Wong</h2>
+                    <p class="groomer-experience">6 years experience</p>
+
+                    <div class="groomer-specialties">
+                        <h3>Specialty</h3>
+                        <ul>
+                            <li>Cat grooming</li>
+                            <li>Anxious cat care</li>
+                            <li>Flea treatment</li>
+                        </ul>
+                    </div>
+
+                    <a class="groomer-profile-button" href="#sophie-profile">
+                        View Profile
+                    </a>
+                </div>
+            </article>
+
+            <!-- Groomer 2 -->
+            <article class="groomer-card">
+                <img
+                    class="groomer-photo"
+                    src="alice.jpg"
+                    alt="Alice Tan with a small golden puppy"
+                    loading="lazy"
+                >
+
+                <div class="groomer-details">
+                    <h2>Alice Tan</h2>
+                    <p class="groomer-experience">5 years experience</p>
+
+                    <div class="groomer-specialties">
+                        <h3>Specialty</h3>
+                        <ul>
+                            <li>Small dog grooming</li>
+                            <li>Friendly styling</li>
+                            <li>Gentle handling</li>
+                        </ul>
+                    </div>
+
+                    <a class="groomer-profile-button" href="#alice-profile">
+                        View Profile
+                    </a>
+                </div>
+            </article>
+
+
+            <!-- Groomer 3 -->
+            <article class="groomer-card">
+                <img
+                    class="groomer-photo"
+                    src="ryan.jpg"
+                    alt="Ryan Lim with a golden retriever"
+                    loading="lazy"
+                >
+
+                <div class="groomer-details">
+                    <h2>Ryan Lim</h2>
+                    <p class="groomer-experience">4 years experience</p>
+
+                    <div class="groomer-specialties">
+                        <h3>Specialty</h3>
+                        <ul>
+                            <li>Large dog grooming</li>
+                            <li>Deshedding treatment</li>
+                            <li>Behaviour handling</li>
+                        </ul>
+                    </div>
+
+                    <a class="groomer-profile-button" href="#ryan-profile">
+                        View Profile
+                    </a>
+                </div>
+            </article>
+
+
+            <!-- Groomer 4 -->
+            <article class="groomer-card">
+                <img
+                    class="groomer-photo"
+                    src="daniel.jpg"
+                    alt="Daniel Ng with a small rabbit"
+                    loading="lazy"
+                >
+
+                <div class="groomer-details">
+                    <h2>Daniel Ng</h2>
+                    <p class="groomer-experience">3 years experience</p>
+
+                    <div class="groomer-specialties">
+                        <h3>Specialty</h3>
+                        <ul>
+                            <li>Rabbit grooming</li>
+                            <li>Nail trimming</li>
+                            <li>Small animal care</li>
+                        </ul>
+                    </div>
+
+                    <a class="groomer-profile-button" href="#daniel-profile">
+                        View Profile
+                    </a>
+                </div>
+            </article>
+
+        </section>
+
+
+        <!-- Profile Details -->
+        <section class="groomer-bios" aria-label="Groomer profiles">
+
+            <article id="alice-profile" class="groomer-bio">
+                <h2>Alice Tan</h2>
+                <p>
+                    Alice specialises in gentle grooming for small dogs,
+                    helping pets feel comfortable throughout their session.
+                </p>
+            </article>
+
+            <article id="ryan-profile" class="groomer-bio">
+                <h2>Ryan Lim</h2>
+                <p>
+                    Ryan focuses on large-breed grooming, deshedding,
+                    and patient handling during grooming sessions.
+                </p>
+            </article>
+
+            <article id="sophie-profile" class="groomer-bio">
+                <h2>Sophie Wong</h2>
+                <p>
+                    Sophie focuses on cat grooming and calm care techniques
+                    for cats that may feel nervous during grooming.
+                </p>
+            </article>
+
+            <article id="daniel-profile" class="groomer-bio">
+                <h2>Daniel Ng</h2>
+                <p>
+                    Daniel provides careful grooming for rabbits and other
+                    small pets, including basic nail care.
+                </p>
+            </article>
+
+        </section>
+
+        <div class="groomers-cta">
+            <h2>Ready to Pamper Your Pet?</h2>
+            <p>Book a grooming session with our caring team.</p>
+            <a href="booking.html" class="groomers-book-button">
+                Book an Appointment
+            </a>
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="groomers-footer">
+        <p>&copy; 2026 Paws &amp; Whiskers. All rights reserved.</p>
+    </footer>
+
+</body>
 </html>

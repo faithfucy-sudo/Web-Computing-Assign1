@@ -217,23 +217,6 @@
 }
 
 
-/* Decorative cat image */
-
-.contact-cat {
-    display: block;
-
-    width: 145px;
-    height: 105px;
-
-    flex-shrink: 0;
-
-    object-fit: cover;
-    object-position: center 45%;
-
-    border-radius: 16px;
-}
-
-
 
 .contact-content {
     display: grid;

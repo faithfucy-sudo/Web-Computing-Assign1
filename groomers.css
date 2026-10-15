@@ -1,0 +1,504 @@
+
+/* Groomers Page Stylesheet*/
+
+.groomers-page {
+    margin: 0;
+    min-height: 100vh;
+    background: #F6EEE3;
+    color: #6B584D;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.groomers-page *,
+.groomers-page *::before,
+.groomers-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* Navigation bar */
+
+.groomers-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    width: 100%;
+    min-height: 88px;
+    padding: 12px 38px;
+
+    background: #FFFDF9;
+    border-bottom: 1px solid #E6D8C8;
+}
+
+.groomers-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+
+    color: #3F281D;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 27px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.groomers-brand img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.groomers-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.groomers-nav a {
+    position: relative;
+    padding: 8px 0;
+
+    color: #6B584D;
+    font-size: 14px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.groomers-nav a:hover,
+.groomers-nav a.active {
+    color: #8A5A3B;
+}
+
+.groomers-nav a.active::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+    bottom: 2px;
+    height: 2px;
+    background: #8A5A3B;
+}
+
+.groomers-book-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 10px 22px;
+
+    background: #A92727;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: background 0.2s ease;
+}
+
+.groomers-book-button:hover {
+    background: #852020;
+    color: #FFFFFF;
+}
+
+
+/* Main content */
+
+.groomers-main {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 34px 28px 50px;
+}
+
+
+/* Heading */
+
+.groomers-heading {
+    margin-bottom: 30px;
+}
+
+.groomers-heading-title {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-bottom: 8px;
+}
+
+.groomers-heading-title span {
+    font-size: 30px;
+    line-height: 1;
+}
+
+.groomers-heading h1 {
+    margin: 0;
+    color: #3F281D;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 36px;
+    line-height: 1.25;
+}
+
+.groomers-heading > p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* Groomer grid */
+
+.groomers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+
+/* Individual groomer cards */
+
+.groomer-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+
+    background: #FFFDF8;
+    border: 1px solid #E6D8C8;
+    border-radius: 15px;
+
+    box-shadow: 0 4px 14px rgba(63, 40, 29, 0.05);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.groomer-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(63, 40, 29, 0.09);
+}
+
+
+/* Groomer photographs */
+
+.groomer-photo {
+    display: block;
+    width: 100%;
+    height: 235px;
+    object-fit: cover;
+    object-position: center 35%;
+    background: #E6D8C8;
+}
+
+
+/* Card details */
+
+.groomer-details {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    padding: 17px 16px 16px;
+}
+
+.groomer-details h2 {
+    margin: 0 0 5px;
+
+    color: #3F281D;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+    line-height: 1.3;
+}
+
+.groomer-experience {
+    margin: 0 0 18px;
+    color: #806D60;
+    font-size: 12px;
+}
+
+
+/* Specialties */
+
+.groomer-specialties {
+    margin-bottom: 18px;
+}
+
+.groomer-specialties h3 {
+    margin: 0 0 8px;
+    color: #3F281D;
+    font-size: 13px;
+}
+
+.groomer-specialties ul {
+    margin: 0;
+    padding-left: 17px;
+}
+
+.groomer-specialties li {
+    margin-bottom: 6px;
+    color: #6B584D;
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+
+/* View Profile button */
+
+.groomer-profile-button {
+    display: block;
+    width: 100%;
+    margin-top: auto;
+    padding: 10px 12px;
+
+    background: #8A5A3B;
+    color: #FFFFFF;
+    border-radius: 22px;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+
+    transition: background 0.2s ease;
+}
+
+.groomer-profile-button:hover {
+    background: #70452D;
+}
+
+
+/* Profile bios */
+
+.groomer-bios {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.groomer-bio {
+    scroll-margin-top: 20px;
+    padding: 22px;
+
+    background: #FFFDF8;
+    border: 1px solid #E6D8C8;
+    border-radius: 14px;
+}
+
+.groomer-bio h2 {
+    margin: 0 0 8px;
+    color: #3F281D;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 21px;
+}
+
+.groomer-bio p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* Booking Call-to-Action */
+
+.groomers-cta {
+    margin-top: 34px;
+    padding: 30px 20px;
+
+    background: #F0E2D2;
+    border: 1px solid #E6D8C8;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.groomers-cta h2 {
+    margin: 0 0 8px;
+    color: #3F281D;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 26px;
+}
+
+.groomers-cta p {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.groomers-cta .groomers-book-button {
+    display: inline-flex;
+}
+
+
+/* Footer */
+
+.groomers-footer {
+    padding: 20px;
+    background: #FFFDF9;
+    border-top: 1px solid #E6D8C8;
+    text-align: center;
+}
+
+.groomers-footer p {
+    margin: 0;
+    color: #806D60;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+    .groomers-navbar {
+        gap: 16px;
+        padding: 12px 24px;
+    }
+
+    .groomers-brand {
+        gap: 8px;
+        font-size: 22px;
+    }
+
+    .groomers-brand img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .groomers-nav {
+        gap: 14px;
+    }
+
+    .groomers-nav a {
+        font-size: 13px;
+    }
+
+    .groomers-main {
+        max-width: 850px;
+    }
+
+    .groomers-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .groomer-photo {
+        height: 280px;
+    }
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+    .groomers-navbar {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 12px 16px;
+    }
+
+    .groomers-brand {
+        font-size: 20px;
+    }
+
+    .groomers-brand img {
+        width: 38px;
+        height: 38px;
+    }
+
+    .groomers-book-button {
+        min-height: 38px;
+        padding: 9px 13px;
+        font-size: 12px;
+    }
+
+    .groomers-nav {
+        order: 3;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 16px;
+        width: 100%;
+    }
+
+    .groomers-nav a {
+        font-size: 12px;
+    }
+
+    .groomers-main {
+        padding: 24px 15px 35px;
+    }
+
+    .groomers-heading {
+        margin-bottom: 23px;
+    }
+
+    .groomers-heading-title {
+        gap: 9px;
+    }
+
+    .groomers-heading-title span {
+        font-size: 24px;
+    }
+
+    .groomers-heading h1 {
+        font-size: 27px;
+    }
+
+    .groomers-heading > p {
+        font-size: 13px;
+    }
+
+    .groomers-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+    }
+
+    .groomer-photo {
+        height: 300px;
+    }
+
+    .groomer-details {
+        padding: 18px;
+    }
+
+    .groomer-details h2 {
+        font-size: 21px;
+    }
+
+    .groomer-specialties li {
+        font-size: 13px;
+    }
+
+    .groomer-bios {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+        margin-top: 22px;
+    }
+
+    .groomers-cta {
+        padding: 25px 16px;
+    }
+
+    .groomers-cta h2 {
+        font-size: 23px;
+    }
+}
+
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .groomers-page *,
+    .groomers-page *::before,
+    .groomers-page *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+}

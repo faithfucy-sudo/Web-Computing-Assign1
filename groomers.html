@@ -1,5 +1,8 @@
+
 <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Groomers | Paws &amp; Whiskers</title>
 
@@ -10,24 +13,25 @@
 <body class="groomers-page">
 
     <!-- Navigation -->
-      <nav class="navbar" aria-label="Main navigation">
-<div class="nav-brand">
-    <!-- Website Logo -->
-    <a href="index.html" class="nav-image-logo">
-        <img src="Paws & Whiskers.png" alt="Paws & Whiskers.png">
-    </a>
-    <!-- Website Name -->
-    <div class="nav-title">
-        <a href="index.html">Paws &amp; Whiskers</a>
-    </div>
-</div>
+    <nav class="navbar" aria-label="Main navigation">
+        <div class="nav-brand">
+            <a href="index.html" class="nav-image-logo">
+                <img src="Paws & Whiskers.png" alt="Paws & Whiskers logo">
+            </a>
+
+            <div class="nav-title">
+                <a href="index.html">Paws &amp; Whiskers</a>
+            </div>
+        </div>
+
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="service.html">Services</a>
             <a href="packages.html">Packages</a>
-            <a href="groomers.html">Groomers</a>
+            <a href="groomers.html" aria-current="page">Groomers</a>
             <a href="contact.html">Contact</a>
         </div>
+
         <a href="booking.html" class="button button-brown">
             Book Now
         </a>
@@ -51,15 +55,15 @@
         </section>
 
 
-        <!-- Groomer Profiles -->
+        <!-- Groomer Profile Cards -->
         <section class="groomers-grid" aria-label="Our grooming team">
 
-        <!-- Groomer 1 -->
+            <!-- Sophie Wong -->
             <article class="groomer-card">
                 <img
                     class="groomer-photo"
                     src="sophie.jpg"
-                    alt="Sophie Wong with a tabby cat"
+                    alt="Sophie Wong grooming a tabby cat"
                     loading="lazy"
                 >
 
@@ -76,13 +80,16 @@
                         </ul>
                     </div>
 
-                    <a class="groomer-profile-button" href="#sophie-profile">
+                    <button type="button"
+                        class="groomer-profile-button"
+                        data-profile="sophie">
                         View Profile
-                    </a>
+                    </button>
                 </div>
             </article>
 
-            <!-- Groomer 2 -->
+
+            <!-- Alice Tan -->
             <article class="groomer-card">
                 <img
                     class="groomer-photo"
@@ -104,19 +111,21 @@
                         </ul>
                     </div>
 
-                    <a class="groomer-profile-button" href="#alice-profile">
+                    <button type="button"
+                        class="groomer-profile-button"
+                        data-profile="alice">
                         View Profile
-                    </a>
+                    </button>
                 </div>
             </article>
 
 
-            <!-- Groomer 3 -->
+            <!-- Ryan Lim -->
             <article class="groomer-card">
                 <img
                     class="groomer-photo"
                     src="ryan.jpg"
-                    alt="Ryan Lim with a golden retriever"
+                    alt="Ryan Lim grooming a golden retriever"
                     loading="lazy"
                 >
 
@@ -133,19 +142,21 @@
                         </ul>
                     </div>
 
-                    <a class="groomer-profile-button" href="#ryan-profile">
+                    <button type="button"
+                        class="groomer-profile-button"
+                        data-profile="ryan">
                         View Profile
-                    </a>
+                    </button>
                 </div>
             </article>
 
 
-            <!-- Groomer 4 -->
+            <!-- Daniel Ng -->
             <article class="groomer-card">
                 <img
                     class="groomer-photo"
                     src="daniel.jpg"
-                    alt="Daniel Ng with a small rabbit"
+                    alt="Daniel Ng grooming a rabbit"
                     loading="lazy"
                 >
 
@@ -162,59 +173,78 @@
                         </ul>
                     </div>
 
-                    <a class="groomer-profile-button" href="#daniel-profile">
+                    <button type="button"
+                        class="groomer-profile-button"
+                        data-profile="daniel">
                         View Profile
-                    </a>
+                    </button>
                 </div>
             </article>
 
         </section>
 
 
-        <!-- Profile Details -->
-        <section class="groomer-bios" aria-label="Groomer profiles">
+        <!-- Popup Modal -->
+        <div class="profile-modal"
+             id="profileModal"
+             aria-hidden="true">
 
-            <article id="alice-profile" class="groomer-bio">
-                <h2>Alice Tan</h2>
-                <p>
-                    Alice specialises in gentle grooming for small dogs,
-                    helping pets feel comfortable throughout their session.
-                </p>
-            </article>
+            <div class="profile-modal-content"
+                 role="dialog"
+                 aria-modal="true"
+                 aria-labelledby="modalName"
+                 tabindex="-1">
 
-            <article id="ryan-profile" class="groomer-bio">
-                <h2>Ryan Lim</h2>
-                <p>
-                    Ryan focuses on large-breed grooming, deshedding,
-                    and patient handling during grooming sessions.
-                </p>
-            </article>
+                <button type="button"
+                    class="profile-modal-close"
+                    id="closeProfile"
+                    aria-label="Close groomer profile">
+                    &times;
+                </button>
 
-            <article id="sophie-profile" class="groomer-bio">
-                <h2>Sophie Wong</h2>
-                <p>
-                    Sophie focuses on cat grooming and calm care techniques
-                    for cats that may feel nervous during grooming.
-                </p>
-            </article>
+                <div class="profile-modal-header">
+                    <img id="modalImage" src="" alt="">
 
-            <article id="daniel-profile" class="groomer-bio">
-                <h2>Daniel Ng</h2>
-                <p>
-                    Daniel provides careful grooming for rabbits and other
-                    small pets, including basic nail care.
-                </p>
-            </article>
+                    <div>
+                        <h2 id="modalName"></h2>
+                        <p id="modalRole"></p>
+                        <p id="modalExperience"></p>
+                    </div>
+                </div>
 
-        </section>
+                <div class="profile-modal-body">
 
-        <div class="groomers-cta">
+                    <h3>About</h3>
+                    <p id="modalBio"></p>
+
+                    <h3>Specialties</h3>
+                    <ul id="modalSpecialties"></ul>
+
+                    <h3>Services Offered</h3>
+                    <ul id="modalServices"></ul>
+
+                    <h3>Grooming Approach</h3>
+                    <p id="modalApproach"></p>
+
+                </div>
+
+                <a href="booking.html" class="profile-book-button">
+                    Book an Appointment
+                </a>
+
+            </div>
+        </div>
+
+
+        <!-- Booking Call to Action -->
+        <section class="groomers-cta">
             <h2>Ready to Pamper Your Pet?</h2>
             <p>Book a grooming session with our caring team.</p>
+
             <a href="booking.html" class="groomers-book-button">
                 Book an Appointment
             </a>
-        </div>
+        </section>
 
     </main>
 
@@ -223,6 +253,193 @@
     <footer class="groomers-footer">
         <p>&copy; 2026 Paws &amp; Whiskers. All rights reserved.</p>
     </footer>
+
+
+    <!-- Groomer Popup Functionality -->
+    <script>
+        const groomerProfiles = {
+            sophie: {
+                name: "Sophie Wong",
+                role: "Cat Grooming Specialist",
+                experience: "6 years of experience",
+                image: "sophie.jpg",
+                bio: "Sophie focuses on cat grooming and helping cats feel as comfortable as possible during grooming sessions.",
+                specialties: [
+                    "Cat grooming",
+                    "Anxious cat care",
+                    "Flea treatment"
+                ],
+                services: [
+                    "Coat brushing and detangling",
+                    "Basic coat maintenance",
+                    "Bathing where appropriate"
+                ],
+                approach: "Sophie uses patient, gentle handling and adapts her approach to each cat's comfort level."
+            },
+
+            alice: {
+                name: "Alice Tan",
+                role: "Small Dog Grooming Specialist",
+                experience: "5 years of experience",
+                image: "alice.jpg",
+                bio: "Alice specialises in gentle grooming for small dogs, helping pets feel comfortable throughout their sessions.",
+                specialties: [
+                    "Small dog grooming",
+                    "Friendly styling",
+                    "Gentle handling"
+                ],
+                services: [
+                    "Bathing and blow-drying",
+                    "Coat brushing and styling",
+                    "Basic grooming care"
+                ],
+                approach: "Alice focuses on patience and gentle handling to create a calm grooming experience for small dogs."
+            },
+
+            ryan: {
+                name: "Ryan Lim",
+                role: "Large Dog Grooming Specialist",
+                experience: "4 years of experience",
+                image: "ryan.jpg",
+                bio: "Ryan focuses on grooming larger dogs and helping maintain clean, healthy, manageable coats.",
+                specialties: [
+                    "Large dog grooming",
+                    "Deshedding treatment",
+                    "Behaviour handling"
+                ],
+                services: [
+                    "Bathing and drying",
+                    "Deshedding and coat brushing",
+                    "Coat trimming and styling"
+                ],
+                approach: "Ryan works patiently with larger dogs and pays attention to their comfort during grooming."
+            },
+
+            daniel: {
+                name: "Daniel Ng",
+                role: "Rabbit and Small Animal Groomer",
+                experience: "3 years of experience",
+                image: "daniel.jpg",
+                bio: "Daniel provides careful grooming for rabbits and other small pets, with particular attention to gentle handling.",
+                specialties: [
+                    "Rabbit grooming",
+                    "Nail trimming",
+                    "Small animal care"
+                ],
+                services: [
+                    "Gentle coat brushing",
+                    "Basic coat maintenance",
+                    "Nail care where appropriate"
+                ],
+                approach: "Daniel aims to keep small-animal grooming calm and comfortable, using careful handling throughout the session."
+            }
+        };
+
+        const modal = document.getElementById("profileModal");
+        const modalContent = modal.querySelector(".profile-modal-content");
+        const closeButton = document.getElementById("closeProfile");
+        const profileButtons = document.querySelectorAll("[data-profile]");
+
+        let previousFocus = null;
+
+        function fillList(listElement, items) {
+            listElement.replaceChildren();
+
+            items.forEach(function (item) {
+                const li = document.createElement("li");
+                li.textContent = item;
+                listElement.appendChild(li);
+            });
+        }
+
+        function openProfile(profileId) {
+            const profile = groomerProfiles[profileId];
+
+            if (!profile) return;
+
+            previousFocus = document.activeElement;
+
+            document.getElementById("modalImage").src = profile.image;
+            document.getElementById("modalImage").alt = profile.name;
+            document.getElementById("modalName").textContent = profile.name;
+            document.getElementById("modalRole").textContent = profile.role;
+            document.getElementById("modalExperience").textContent = profile.experience;
+            document.getElementById("modalBio").textContent = profile.bio;
+            document.getElementById("modalApproach").textContent = profile.approach;
+
+            fillList(
+                document.getElementById("modalSpecialties"),
+                profile.specialties
+            );
+
+            fillList(
+                document.getElementById("modalServices"),
+                profile.services
+            );
+
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-open");
+
+            closeButton.focus();
+        }
+
+        function closeProfile() {
+            modal.classList.remove("is-open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.classList.remove("modal-open");
+
+            if (previousFocus) {
+                previousFocus.focus();
+            }
+        }
+
+        profileButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                openProfile(button.dataset.profile);
+            });
+        });
+
+        closeButton.addEventListener("click", closeProfile);
+
+        modal.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                closeProfile();
+            }
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (
+                event.key === "Escape" &&
+                modal.classList.contains("is-open")
+            ) {
+                closeProfile();
+            }
+
+            if (
+                event.key === "Tab" &&
+                modal.classList.contains("is-open")
+            ) {
+                const focusable = modal.querySelectorAll(
+                    'button, a[href]'
+                );
+
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (
+                    !event.shiftKey &&
+                    document.activeElement === last
+                ) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>

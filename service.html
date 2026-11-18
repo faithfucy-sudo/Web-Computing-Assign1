@@ -3,6 +3,8 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services - Paws & Whiskers</title>
 
     <link rel="stylesheet" href="style.css">
@@ -17,7 +19,7 @@
         <div class="nav-brand">
 
             <div class="nav-image-logo">
-                <img src="Paws & Whiskers.png" alt="Paws & Whiskers Logo">
+                <img src="images/Paws & Whiskers.png" alt="Paws & Whiskers Logo">
             </div>
 
             <div class="nav-title">
@@ -56,22 +58,33 @@
     <!-- Filter Buttons -->
     <section class="filter-container">
 
-        <button class="filter-button active-filter">All</button>
-        <button class="filter-button">Dog</button>
-        <button class="filter-button">Cat</button>
-        <button class="filter-button">Rabbit</button>
+        <button type="button" class="filter-button active-filter" data-filter="All" aria-pressed="true">All</button>
+        <button type="button" class="filter-button" data-filter="Dog" aria-pressed="false">Dog</button>
+        <button type="button" class="filter-button" data-filter="Cat" aria-pressed="false">Cat</button>
+        <button type="button" class="filter-button" data-filter="Rabbit" aria-pressed="false">Rabbit</button>
 
     </section>
 
 
+    <!--
+        BACKEND INTEGRATION (Faith):
+        The service cards below are the current static content.
+        When this page becomes service.php, create one "service-card"
+        for each service in the database, keeping the same structure:
+        image, name (h2), price (h3), one "pet-tag" span for each
+        animal type, and the description (p).
+        The category filter (service.js) reads the "pet-tag" spans,
+        so no extra attributes are needed.
+    -->
+
     <!-- Service Cards -->
-    <section class="service-container">
+    <section class="service-container" id="serviceList">
 
 
         <!-- Basic Bath -->
         <div class="service-card">
 
-            <img src="basic_bath.png"
+            <img src="images/basic_bath.png"
                  class="basic-bath-image"
                  alt="Basic Bath">
 
@@ -100,7 +113,7 @@
         <!-- Full Grooming -->
         <div class="service-card">
 
-            <img src="full_grooming.png"
+            <img src="images/full_grooming.png"
                  class="full-grooming-image"
                  alt="Full Grooming">
 
@@ -129,7 +142,7 @@
         <!-- Hair Trimming -->
         <div class="service-card">
 
-            <img src="hair_trimming.png"
+            <img src="images/hair_trimming.png"
                  class="hair-trimming-image"
                  alt="Hair Trimming">
 
@@ -158,7 +171,7 @@
         <!-- Nail Clipping -->
         <div class="service-card">
 
-            <img src="nail_clipping.png"
+            <img src="images/nail_clipping.png"
                  class="nail-clipping-image"
                  alt="Nail Clipping">
 
@@ -188,7 +201,7 @@
         <!-- Ear Cleaning -->
         <div class="service-card">
 
-            <img src="ear_cleaning.png"
+            <img src="images/ear_cleaning.png"
                  class="ear-cleaning-image"
                  alt="Ear Cleaning">
 
@@ -217,7 +230,7 @@
         <!-- Dental Cleaning -->
         <div class="service-card">
 
-            <img src="dental_cleaning.png"
+            <img src="images/dental_cleaning.png"
                  class="dental-cleaning-image"
                  alt="Dental Cleaning">
 
@@ -246,7 +259,7 @@
         <!-- De-shedding -->
         <div class="service-card">
 
-            <img src="deshedding.png"
+            <img src="images/deshedding.png"
                  class="deshedding-image"
                  alt="De-shedding Treatment">
 
@@ -275,7 +288,7 @@
         <!-- Spa Treatment -->
         <div class="service-card">
 
-            <img src="spa_treatment.png"
+            <img src="images/spa_treatment.png"
                  class="spa-treatment-image"
                  alt="Spa Treatment">
 
@@ -302,6 +315,65 @@
         </div>
 
     </section>
+
+
+    <!-- Shown by service.js when no service matches the chosen filter -->
+    <p class="no-services-message" id="noServicesMessage" hidden>
+        No services are available for this pet type yet.
+    </p>
+
+
+    <!-- Service Tiers -->
+    <!--
+        BACKEND INTEGRATION (Faith):
+        These tiers use the names and prices from packages.html.
+        Replace them with the tiers stored in the database
+        (one "tier-card" per tier).
+    -->
+    <section class="tier-section">
+
+        <h1 class="section-title">
+            Available Service Tiers
+        </h1>
+
+        <p>
+            Combine our services into a package and save.
+        </p>
+
+        <div class="tier-container">
+
+            <!-- Bronze -->
+            <div class="tier-card">
+                <h2>Bronze</h2>
+                <h3>RM50</h3>
+                <p>Essential Care</p>
+            </div>
+
+            <!-- Silver -->
+            <div class="tier-card">
+                <h2>Silver</h2>
+                <h3>RM80</h3>
+                <p>Complete Care</p>
+            </div>
+
+            <!-- Gold -->
+            <div class="tier-card">
+                <h2>Gold</h2>
+                <h3>RM120</h3>
+                <p>Ultimate Care</p>
+            </div>
+
+        </div>
+
+        <a href="packages.html" class="button button-brown">
+            Compare Packages
+        </a>
+
+    </section>
+
+
+    <!-- Service category filter -->
+    <script src="service.js"></script>
 
 </body>
 

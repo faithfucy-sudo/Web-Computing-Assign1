@@ -599,3 +599,57 @@
     }
 
 }
+
+
+/* ==========================================
+   BOOKING SUMMARY CARD
+   (uses the .booking-notes card style)
+   ========================================== */
+
+.booking-summary {
+    background: #FFFDF8;
+}
+
+.booking-summary dl {
+    margin: 0;
+}
+
+.booking-summary dl div {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 8px 0;
+
+    border-bottom: 1px solid #E6D8C8;
+
+    font-size: 14px;
+}
+
+.booking-summary dl div:last-child {
+    border-bottom: none;
+}
+
+.booking-summary dt {
+    color: #3F281D;
+    font-weight: bold;
+}
+
+.booking-summary dd {
+    margin: 0;
+
+    text-align: right;
+}
+
+#summary-price {
+    color: #B52A2A;
+    font-weight: bold;
+}
+
+
+/* Red border on dropdowns with an error (auth.css covers inputs) */
+
+.booking-form-grid .form-group select.input-error {
+    border-color: #B52A2A;
+}

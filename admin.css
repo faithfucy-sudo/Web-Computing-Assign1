@@ -1,0 +1,212 @@
+/* Admin Dashboard Stylesheet */
+
+/*
+   This page reuses booking.css (page header, cards),
+   auth.css (message box) and dashboard.css (sample notice,
+   history table, status badges, profile-style details).
+   This file adds the overview cards, row action controls
+   and the appointment details panel.
+*/
+
+
+/* Overview Cards */
+
+.overview-grid {
+    display: grid;
+
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+}
+
+.overview-card {
+    padding: 18px;
+
+    background-color: #FFFDF8;
+
+    border: 1px solid #E6D8C8;
+    border-radius: 15px;
+
+    text-align: center;
+}
+
+.overview-card h2 {
+    margin: 0 0 6px;
+
+    color: #806D60;
+
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.overview-card p {
+    margin: 0;
+
+    color: #3F281D;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+
+/* Appointments table (wider than the customer history table) */
+
+.admin-table {
+    min-width: 980px;
+}
+
+.admin-table td {
+    vertical-align: top;
+}
+
+.cell-subtext {
+    display: block;
+
+    color: #806D60;
+
+    font-size: 12px;
+}
+
+
+/* Row action controls */
+
+.status-form {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    margin: 0 0 8px;
+}
+
+.status-form select {
+    height: 34px;
+
+    padding: 4px 8px;
+
+    background: #FFFDF8;
+    color: #6B584D;
+
+    border: 1px solid #E6D8C8;
+    border-radius: 8px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+}
+
+.admin-button {
+    padding: 7px 12px;
+
+    background-color: #8A5A3B;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.admin-button:hover {
+    background-color: #70452D;
+}
+
+.admin-button-light {
+    background-color: #FFFDF8;
+    color: #8A5A3B;
+
+    border: 1px solid #8A5A3B;
+}
+
+.admin-button-light:hover {
+    background-color: #F6EEE3;
+}
+
+.admin-button-cancel {
+    background-color: #FFFDF8;
+    color: #B52A2A;
+
+    border: 1px solid #B52A2A;
+}
+
+.admin-button-cancel:hover {
+    background-color: #FBEAEA;
+}
+
+.row-buttons {
+    display: flex;
+
+    gap: 6px;
+}
+
+
+/* Highlight the row being viewed */
+
+.admin-table tr.selected-row td {
+    background-color: #F6EEE3;
+}
+
+
+/* Appointment Details Panel */
+
+.details-panel {
+    margin-top: 24px;
+}
+
+.details-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+}
+
+.details-grid h3 {
+    margin: 0 0 6px;
+
+    color: #3F281D;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 19px;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+    .overview-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .details-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+}
+
+
+/* Mobile phone */
+
+@media (max-width: 560px) {
+
+    .overview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .overview-card p {
+        font-size: 26px;
+    }
+
+    /* Total takes a full row so the other four make two even rows */
+    .overview-card:first-child {
+        grid-column: 1 / -1;
+    }
+
+}

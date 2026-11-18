@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking | Paws &amp; Whiskers</title>
 
@@ -8,6 +9,8 @@
     <link rel="stylesheet" href="style.css">
     <!-- Booking page styling -->
     <link rel="stylesheet" href="booking.css">
+    <!-- Field error and message styling -->
+    <link rel="stylesheet" href="auth.css">
 </head>
 
 <body>
@@ -17,7 +20,7 @@
 <div class="nav-brand">
     <!-- Website Logo -->
     <a href="index.html" class="nav-image-logo">
-        <img src="Paws & Whiskers.png" alt="Paws & Whiskers.png">
+        <img src="images/Paws & Whiskers.png" alt="Paws & Whiskers Logo">
     </a>
     <!-- Website Name -->
     <div class="nav-title">
@@ -59,150 +62,141 @@
                     Appointment Details
                 </h2>
                 <p class="booking-description">
-                    Fill in your details to arrange a grooming session.
+                    Choose your pet, a service, a groomer and a time.
                     All fields are required.
                 </p>
 
+                <!-- BACKEND INTEGRATION (Faith): show the logged-in customer's name -->
+                <p class="booking-description">
+                    Booking as: <strong>Sample Customer</strong>
+                </p>
+
+
+                <!-- Feedback message (errors / success) -->
+                <!-- BACKEND INTEGRATION (Faith): server booking errors can be shown here -->
+                <div id="form-message" class="form-message" role="alert"></div>
+
 
                 <!-- Booking Form -->
-                <form id="bookingForm">
+                <!-- BACKEND INTEGRATION (Faith): set the action to the agreed PHP file -->
+                <form id="bookingForm" method="post" action="" novalidate>
                     <div class="booking-form-grid">
-                        <!-- Owner Name -->
-                        <div class="form-group">
-                            <label for="owner-name">
-                                Owner Name *
-                            </label>
-                            <input
-                                type="text"
-                                id="owner-name"
-                                name="owner-name"
-                                placeholder="Enter your name"
-                                autocomplete="name"
-                                required
-                            >
-                        </div>
 
-
-                        <!-- Contact Phone -->
-                        <div class="form-group">
-                            <label for="phone">
-                                Contact Phone *
-                            </label>
-                            <input
-                                type="tel"
-                                id="phone"
-                                name="phone"
-                                placeholder="e.g. 012-3456789"
-                                autocomplete="tel"
-                                pattern="[0-9+\-\s()]{8,20}"
-                                title="Enter a valid phone number."
-                                required
-                            >
-                        </div>
-
-
-                        <!-- Pet Type -->
-                        <div class="form-group">
-                            <label for="pet-type">
-                                Pet Type *
-                            </label>
-                            <select
-                                id="pet-type"
-                                name="pet-type"
-                                required
-                            >
-
-                                <option value="">Select pet type</option>
-                                <option value="Dog">Dog</option>
-                                <option value="Cat">Cat</option>
-                                <option value="Rabbit">Rabbit</option>
-                            </select>
-                        </div>
-
-
-                        <!-- Pet Name -->
-                        <div class="form-group">
-                            <label for="pet-name">
-                                Pet Name *
-                            </label>
-                            <input
-                                type="text"
-                                id="pet-name"
-                                name="pet-name"
-                                placeholder="Enter pet name"
-                                required
-                            >
-                        </div>
-
-
-                        <!-- Selected Package -->
+                        <!-- Registered Pet -->
                         <div class="form-group full-width">
-                            <label for="package">
-                                Selected Package *
+                            <label for="booking-pet">
+                                Select Your Pet *
                             </label>
-                            <select
-                                id="package"
-                                name="package"
-                                required
-                            >
-                                <option value="">Select a package</option>
-                                <option value="Bronze Package">
-                                    Bronze Package - RM50
-                                </option>
-                                <option value="Silver Package">
-                                    Silver Package - RM80
-                                </option>
-                                <option value="Gold Package">
-                                    Gold Package - RM120
-                                </option>
+                            <!--
+                                BACKEND INTEGRATION (Faith):
+                                Create one option for each of the customer's pets.
+                                value = the pet's ID, data-type = Dog, Cat or Rabbit.
+                                If the customer has no pets, show a message with a
+                                link to dashboard.php so they can add one first.
+                            -->
+                            <select id="booking-pet" name="pet_id">
+                                <option value="">Select a registered pet</option>
+                                <!-- SAMPLE DATA START -->
+                                <option value="1" data-type="Dog">Buddy (Dog)</option>
+                                <option value="2" data-type="Cat">Milo (Cat)</option>
+                                <option value="3" data-type="Rabbit">Snowy (Rabbit)</option>
+                                <!-- SAMPLE DATA END -->
                             </select>
+                            <p class="field-error" id="booking-pet-error"></p>
                         </div>
 
 
-                        <!-- Preferred Date -->
+                        <!-- Grooming Service -->
                         <div class="form-group full-width">
-                            <label for="date">
+                            <label for="booking-service">
+                                Grooming Service *
+                            </label>
+                            <!--
+                                BACKEND INTEGRATION (Faith):
+                                Names, prices and pet types copied from service.html
+                                and packages.html. Replace with services from the
+                                database. data-pets lists the animals the service
+                                is available for.
+                            -->
+                            <select id="booking-service" name="service">
+                                <option value="">Select a service or package</option>
+                                <optgroup label="Services">
+                                    <option value="Basic Bath" data-price="30" data-pets="Dog Cat">Basic Bath - RM30</option>
+                                    <option value="Full Grooming" data-price="60" data-pets="Dog Cat">Full Grooming - RM60</option>
+                                    <option value="Hair Trimming" data-price="40" data-pets="Dog Cat">Hair Trimming - RM40</option>
+                                    <option value="Nail Clipping" data-price="15" data-pets="Dog Cat Rabbit">Nail Clipping - RM15</option>
+                                    <option value="Ear Cleaning" data-price="20" data-pets="Dog Cat">Ear Cleaning - RM20</option>
+                                    <option value="Dental Cleaning" data-price="25" data-pets="Dog Cat">Dental Cleaning - RM25</option>
+                                    <option value="De-shedding" data-price="40" data-pets="Dog Cat">De-shedding - RM40</option>
+                                    <option value="Spa Treatment" data-price="50" data-pets="Dog Cat Rabbit">Spa Treatment - RM50</option>
+                                </optgroup>
+                                <optgroup label="Packages">
+                                    <option value="Bronze Package" data-price="50" data-pets="Dog Cat">Bronze Package - RM50</option>
+                                    <option value="Silver Package" data-price="80" data-pets="Dog Cat">Silver Package - RM80</option>
+                                    <option value="Gold Package" data-price="120" data-pets="Dog Cat">Gold Package - RM120</option>
+                                </optgroup>
+                            </select>
+                            <p class="field-error" id="booking-service-error"></p>
+                        </div>
+
+
+                        <!-- Groomer -->
+                        <div class="form-group full-width">
+                            <label for="booking-groomer">
+                                Groomer *
+                            </label>
+                            <!-- BACKEND INTEGRATION (Faith): replace with groomers from the database (value = groomer ID) -->
+                            <select id="booking-groomer" name="groomer">
+                                <option value="">Select a groomer</option>
+                                <option value="Sophie Wong">Sophie Wong - Cat grooming</option>
+                                <option value="Alice Tan">Alice Tan - Small dog grooming</option>
+                                <option value="Ryan Lim">Ryan Lim - Large dog grooming</option>
+                                <option value="Daniel Ng">Daniel Ng - Rabbit grooming</option>
+                            </select>
+                            <p class="field-error" id="booking-groomer-error"></p>
+                        </div>
+
+
+                        <!-- Booking Date -->
+                        <div class="form-group">
+                            <label for="booking-date">
                                 Preferred Date *
                             </label>
                             <input
                                 type="date"
-                                id="date"
-                                name="date"
-                                required
+                                id="booking-date"
+                                name="booking_date"
                             >
+                            <p class="field-error" id="booking-date-error"></p>
                         </div>
 
 
-                        <!-- Preferred Time Slot -->
-                        <div class="form-group full-width">
-                            <label for="time">
-                                Preferred Time Slot *
+                        <!-- Booking Time -->
+                        <div class="form-group">
+                            <label for="booking-time">
+                                Preferred Time *
                             </label>
-                            <select
-                                id="time"
-                                name="time"
-                                required
-                            >
+                            <select id="booking-time" name="booking_time">
                                 <option value="">Select time slot</option>
-                                <option value="09:00 AM">09:00 AM</option>
-                                <option value="10:00 AM">10:00 AM</option>
-                                <option value="11:00 AM">11:00 AM</option>
-                                <option value="12:00 PM">12:00 PM</option>
-                                <option value="01:00 PM">01:00 PM</option>
-                                <option value="02:00 PM">02:00 PM</option>
-                                <option value="03:00 PM">03:00 PM</option>
-                                <option value="04:00 PM">04:00 PM</option>
-                                <option value="05:00 PM">05:00 PM</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="13:00">01:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="17:00">05:00 PM</option>
                             </select>
+                            <p class="field-error" id="booking-time-error"></p>
                         </div>
                     </div>
 
 
                     <!-- Disclaimer -->
                     <p class="booking-disclaimer">
-                        Please check your details before submitting.
-                        This demonstration form does not reserve an
-                        actual appointment.
+                        Please check your booking summary before submitting.
+                        Your request will be confirmed by our team.
                     </p>
 
 
@@ -216,23 +210,45 @@
                 </form>
             </section>
 
-            <script>
-                document.getElementById("bookingForm").addEventListener("submit", function(event) {
-                    event.preventDefault();
-
-                    alert("Thank you for choosing Paws & Whiskers! Your appointment request has been submitted. We look forward to seeing you and your pet!");
-
-                    this.reset();
-                });
-            </script>
-
 
             <!-- RIGHT COLUMN: Image and Important Notes -->
             <aside class="booking-sidebar">
+                <!-- Booking Summary (filled in by booking.js) -->
+                <section class="booking-notes booking-summary">
+                    <h2>Booking Summary</h2>
+                    <dl>
+                        <div>
+                            <dt>Pet</dt>
+                            <dd id="summary-pet">Not selected</dd>
+                        </div>
+                        <div>
+                            <dt>Service</dt>
+                            <dd id="summary-service">Not selected</dd>
+                        </div>
+                        <div>
+                            <dt>Groomer</dt>
+                            <dd id="summary-groomer">Not selected</dd>
+                        </div>
+                        <div>
+                            <dt>Date</dt>
+                            <dd id="summary-date">Not selected</dd>
+                        </div>
+                        <div>
+                            <dt>Time</dt>
+                            <dd id="summary-time">Not selected</dd>
+                        </div>
+                        <div>
+                            <dt>Price</dt>
+                            <dd id="summary-price">-</dd>
+                        </div>
+                    </dl>
+                </section>
+
+
                 <!-- Puppy Image -->
                 <div class="booking-image-card">
                     <img
-                        src="booking-puppy.png"
+                        src="images/booking-puppy.png"
                         alt="Happy golden retriever wrapped in a towel after a bath"
                         class="booking-pet-image"
                     >
@@ -262,57 +278,9 @@
     </main>
 
 
-    <!-- Booking Form JavaScript -->
-    <script>
-        // Prevent users from selecting a date in the past.
-        const dateInput = document.getElementById("date");
-        const today = new Date();
-        const localToday =
-            today.getFullYear() + "-" +
-            String(today.getMonth() + 1).padStart(2, "0") + "-" +
-            String(today.getDate()).padStart(2, "0");
-        dateInput.min = localToday;
-
-
-        // Handle booking form submission.
-        document.getElementById("bookingForm").addEventListener(
-            "submit",
-            function (event) {
-                event.preventDefault();
-                // Check that all required fields are valid.
-                if (!this.checkValidity()) {
-                    this.reportValidity();
-                    return;
-                }
-                // Retrieve booking information.
-                const ownerName =
-                    document.getElementById("owner-name").value.trim();
-                const petName =
-                    document.getElementById("pet-name").value.trim();
-                const petType =
-                    document.getElementById("pet-type").value;
-                const selectedPackage =
-                    document.getElementById("package").value;
-                const preferredDate =
-                    document.getElementById("date").value;
-                const preferredTime =
-                    document.getElementById("time").value;
-
-
-                // Display booking confirmation alert.
-                alert(
-                    "Booking Request Submitted!\n\n" +
-                    "Owner: " + ownerName + "\n" +
-                    "Pet Name: " + petName + "\n" +
-                    "Pet Type: " + petType + "\n" +
-                    "Package: " + selectedPackage + "\n" +
-                    "Date: " + preferredDate + "\n" +
-                    "Time: " + preferredTime + "\n\n" +
-                    "This is a demonstration only. " +
-                    "Your appointment has NOT been reserved."
-                );
-            }
-        );
-    </script>
+    <!-- Shared form helpers (showError, clearError, showFormMessage) -->
+    <script src="auth.js"></script>
+    <!-- Booking form validation and summary -->
+    <script src="booking.js"></script>
 </body>
 </html>

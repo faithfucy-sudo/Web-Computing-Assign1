@@ -56,3 +56,66 @@
     line-height: 1.5;
     margin-bottom: 20px;
 }
+
+
+/* RESPONSIVE: TABLET */
+
+@media (max-width: 900px) {
+
+    .package-section {
+        padding: 50px 24px 60px 24px;
+    }
+
+    .package-container {
+        flex-wrap: wrap;
+    }
+
+    .package-card {
+        width: 45%;
+    }
+
+}
+
+
+/* RESPONSIVE: MOBILE PHONE */
+
+@media (max-width: 760px) {
+
+    /*
+       The hero and facility sections use inline styles
+       (style="width:50%"), so !important is needed here
+       to override them on small screens.
+    */
+
+    .section {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .section > div {
+        width: 100% !important;
+        padding: 0 20px !important;
+    }
+
+    .section img {
+        height: 320px !important;
+    }
+
+    .section:first-of-type > div:first-child {
+        padding-top: 30px !important;
+    }
+
+    .facility-section {
+        padding: 40px 0;
+    }
+
+    .package-section {
+        padding: 40px 20px 50px 20px;
+    }
+
+    .package-card {
+        width: 100%;
+        max-width: 420px;
+    }
+
+}

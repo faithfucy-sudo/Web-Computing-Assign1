@@ -1,0 +1,322 @@
+/* Customer Dashboard Stylesheet */
+
+/*
+   This page reuses booking.css for the page header, cards,
+   form grid, inputs and submit button, and auth.css for the
+   field errors and the message box. This file adds the
+   dashboard layout, profile, pet cards and history table.
+*/
+
+
+/* Page Container */
+
+.dashboard-page {
+    width: 100%;
+    max-width: 1150px;
+
+    margin: 0 auto;
+    padding: 18px 20px 40px;
+}
+
+
+/* Sample data notice */
+
+.sample-notice {
+    margin: 0 0 22px;
+    padding: 10px 14px;
+
+    background-color: #FFF4D6;
+    color: #6B584D;
+
+    border: 1px dashed #D9B76A;
+    border-radius: 9px;
+
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+
+/* Dashboard Layout */
+/* Desktop: profile and add pet on the left, pets on the right */
+
+.dashboard-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1.7fr);
+
+    align-items: start;
+
+    gap: 24px;
+}
+
+.dashboard-profile {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.dashboard-pets {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+}
+
+.dashboard-add-pet {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.dashboard-history {
+    margin-top: 24px;
+}
+
+
+/* Profile Details */
+
+.profile-details {
+    margin: 0;
+}
+
+.profile-details div {
+    padding: 11px 0;
+
+    border-bottom: 1px solid #E6D8C8;
+}
+
+.profile-details div:last-child {
+    border-bottom: none;
+}
+
+.profile-details dt {
+    color: #806D60;
+
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.profile-details dd {
+    margin: 4px 0 0;
+
+    color: #3F281D;
+
+    font-size: 15px;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* Pet Cards */
+
+.pet-list {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+.pet-card {
+    padding: 18px;
+
+    background-color: #F6EEE3;
+
+    border: 1px solid #E6D8C8;
+    border-radius: 15px;
+}
+
+.pet-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.pet-card h3 {
+    margin: 0;
+
+    color: #3F281D;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 20px;
+}
+
+.pet-type-tag {
+    display: inline-block;
+
+    padding: 4px 11px;
+
+    background-color: #FFFDF8;
+    color: #6B584D;
+
+    border: 1px solid #E6D8C8;
+    border-radius: 15px;
+
+    font-size: 13px;
+}
+
+.pet-card p {
+    margin: 10px 0 0;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+.pet-card .pet-label {
+    color: #3F281D;
+    font-weight: bold;
+}
+
+.pet-card .preview-label {
+    color: #B52A2A;
+    font-size: 12px;
+}
+
+.empty-message {
+    margin: 0;
+
+    color: #806D60;
+    font-size: 14px;
+}
+
+
+/* Textarea for medical notes (booking.css only styles input and select) */
+
+.booking-form-grid .form-group textarea {
+    display: block;
+
+    width: 100%;
+    min-height: 90px;
+
+    padding: 10px 12px;
+
+    background: #FFFDF8;
+    color: #6B584D;
+
+    border: 1px solid #E6D8C8;
+    border-radius: 9px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+
+    resize: vertical;
+}
+
+.booking-form-grid .form-group textarea:focus {
+    outline: 2px solid #8A5A3B;
+    outline-offset: 2px;
+
+    border-color: #8A5A3B;
+}
+
+.booking-form-grid .form-group select.input-error,
+.booking-form-grid .form-group textarea.input-error {
+    border-color: #B52A2A;
+}
+
+
+/* Appointment History Table */
+
+.table-scroll {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border-radius: 12px;
+}
+
+.history-table {
+    width: 100%;
+    min-width: 600px;
+
+    border-collapse: collapse;
+
+    background-color: #FFFDF8;
+
+    font-size: 14px;
+}
+
+.history-table th,
+.history-table td {
+    padding: 13px 14px;
+
+    border: 1px solid #E6D8C8;
+
+    text-align: left;
+}
+
+.history-table th {
+    background-color: #3F281D;
+    color: white;
+}
+
+
+/* Booking Status Badges */
+
+.status-badge {
+    display: inline-block;
+
+    padding: 4px 11px;
+
+    border-radius: 15px;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-pending {
+    background-color: #FFF4D6;
+    color: #8A6100;
+}
+
+.status-confirmed {
+    background-color: #E3EEF8;
+    color: #2B5C8A;
+}
+
+.status-completed {
+    background-color: #EAF3E6;
+    color: #2F6B3A;
+}
+
+.status-cancelled {
+    background-color: #FBEAEA;
+    color: #B52A2A;
+}
+
+
+/* Tablet: stack everything into one column */
+
+@media (max-width: 900px) {
+
+    .dashboard-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .dashboard-profile,
+    .dashboard-pets,
+    .dashboard-add-pet {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+}
+
+
+/* Mobile phone */
+
+@media (max-width: 560px) {
+
+    .dashboard-page {
+        padding: 12px 14px 28px;
+    }
+
+    .pet-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+}

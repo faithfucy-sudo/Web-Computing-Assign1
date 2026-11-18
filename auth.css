@@ -1,0 +1,116 @@
+/* Login and Register Page Stylesheet */
+
+/*
+   These pages reuse booking.css for the card, form grid,
+   inputs and submit button. This file only adds the
+   page width and the validation / feedback messages.
+*/
+
+
+/* Page Container */
+
+.auth-page {
+    width: 100%;
+    max-width: 520px;
+
+    margin: 0 auto;
+    padding: 18px 20px 40px;
+}
+
+.auth-page.auth-page-wide {
+    max-width: 700px;
+}
+
+
+/* Input with an error */
+
+.booking-form-grid .form-group input.input-error {
+    border-color: #B52A2A;
+}
+
+
+/* Error text under each field */
+
+.field-error {
+    min-height: 16px;
+
+    margin: 0;
+
+    color: #B52A2A;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* Small hint text under a field */
+
+.field-hint {
+    margin: 0;
+
+    color: #806D60;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+/* Message box at the top of the form */
+
+.form-message {
+    display: none;
+
+    margin: 0 0 18px;
+    padding: 12px 14px;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.form-message.message-error {
+    display: block;
+
+    background-color: #FBEAEA;
+    color: #B52A2A;
+
+    border: 1px solid #E8BDBD;
+}
+
+.form-message.message-success {
+    display: block;
+
+    background-color: #EAF3E6;
+    color: #2F6B3A;
+
+    border: 1px solid #C5DDBE;
+}
+
+
+/* Space between the last field and the button */
+
+.auth-page .booking-submit {
+    margin-top: 18px;
+}
+
+
+/* Link to the other form */
+
+.auth-switch {
+    margin: 18px 0 0;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+.auth-switch a {
+    color: #8A5A3B;
+
+    font-weight: bold;
+}
+
+.auth-switch a:hover {
+    color: #70452D;
+}

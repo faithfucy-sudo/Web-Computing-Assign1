@@ -188,3 +188,35 @@ td:first-child {
     text-align: left;
     font-weight: bold;
 }
+
+
+/* RESPONSIVE: TABLET AND MOBILE PHONE */
+
+@media (max-width: 900px) {
+
+    .package-header {
+        padding: 40px 20px 20px 20px;
+    }
+
+    .package-container {
+        flex-direction: column;
+        align-items: center;
+
+        padding: 30px 20px 50px 20px;
+    }
+
+    .package-card {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .comparison-section {
+        padding: 40px 20px;
+    }
+
+    th,
+    td {
+        padding: 12px 8px;
+    }
+
+}

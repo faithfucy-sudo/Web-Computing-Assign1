@@ -7,7 +7,8 @@
 // processing is ready. While it is false, a valid form
 // shows a message instead of being sent to the server.
 // Change it to true to let valid forms submit normally.
-const backendConnected = false;
+const registrationBackendConnected = true;
+const loginBackendConnected = true;
 
 
 // Show an error message under one field.
@@ -81,13 +82,26 @@ function clearErrorWhenTyping(inputIds) {
 
 // After the form passes validation, either send it to the
 // server or (while the backend is not ready) show a message.
+
 function finishValidForm(form, demoMessage) {
+
+    let backendConnected = false;
+
+    if (form.id === "registerForm") {
+        backendConnected = registrationBackendConnected;
+    }
+
+    if (form.id === "loginForm") {
+        backendConnected = loginBackendConnected;
+    }
+
     if (backendConnected) {
         form.submit();
     } else {
         showFormMessage(demoMessage, "success");
     }
 }
+
 
 
 // ==========================================

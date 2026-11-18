@@ -166,6 +166,39 @@ if (bookingForm) {
     // Prevent users from picking a past date in the calendar.
     dateInput.min = getTodayText();
 
+
+    // Automatically select the groomer passed from groomers.html.
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedGroomer = urlParams.get("groomer");
+
+    // Only allow the four existing groomers.
+    const groomerMap = {
+        sophie: "Sophie Wong",
+        alice: "Alice Tan",
+        ryan: "Ryan Lim",
+        daniel: "Daniel Ng"
+    };
+
+    if (
+        selectedGroomer &&
+        Object.prototype.hasOwnProperty.call(groomerMap, selectedGroomer)
+    ) {
+        const groomerName = groomerMap[selectedGroomer];
+
+        const matchingOption = Array.from(groomerSelect.options).find(
+            function (option) {
+                return option.value === groomerName;
+            }
+        );
+
+        if (matchingOption) {
+            groomerSelect.value = matchingOption.value;
+        }
+    }
+
+    // Update the booking summary immediately.
+    updateSummary();
+
     clearErrorWhenTyping([
         "booking-pet",
         "booking-service",

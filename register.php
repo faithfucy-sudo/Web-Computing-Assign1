@@ -1,20 +1,107 @@
-<?php
-/*
-    BACKEND INTEGRATION (Faith):
-    This page is the registration interface only.
-    Saving the customer, password hashing and checking
-    for an existing email are handled by the backend.
 
-    Still to confirm with Faith:
-    - Which PHP file processes the registration (form "action" below).
-    - The POST field names (the "name" attributes below are
-      PROPOSED names only).
-    - Whether "confirm_password" should be sent to the server.
-    - How errors (e.g. "email already registered") are sent
-      back to this page (e.g. a message inside #form-message).
-    - Where the user goes after registering (e.g. login.php).
-*/
+<?php
+
+// Connect to the database
+require_once "db.php";
+
+// Store form values
+$full_name = "";
+$email = "";
+$phone = "";
+
+// Store error messages
+$errors = [];
+
+// Process registration when the form is submitted
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Get submitted form data
+    $full_name = trim($_POST["full_name"] ?? "");
+    $email = trim($_POST["email"] ?? "");
+    $phone = trim($_POST["phone"] ?? "");
+    $password = $_POST["password"] ?? "";
+    $confirm_password = $_POST["confirm_password"] ?? "";
+
+    // Validate required fields
+    if ($full_name === "" || $email === "" || $phone === "" ||
+        $password === "" || $confirm_password === "") {
+        $errors[] = "Please fill in all required fields.";
+    }
+
+    // Validate email
+    if ($email !== "" && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Please enter a valid email address.";
+    }
+
+    // Validate password length
+    if ($password !== "" && strlen($password) < 8) {
+        $errors[] = "Password must contain at least 8 characters.";
+    }
+
+    // Check password confirmation
+    if ($password !== $confirm_password) {
+        $errors[] = "Passwords do not match.";
+    }
+
+    // Continue if validation passes
+    if (empty($errors)) {
+
+        // Check whether email already exists
+        $check_email = $conn->prepare(
+            "SELECT user_id FROM users WHERE email = ?"
+        );
+
+        $check_email->bind_param("s", $email);
+        $check_email->execute();
+        $result = $check_email->get_result();
+
+        if ($result->num_rows > 0) {
+
+            $errors[] = "This email address is already registered.";
+
+        } else {
+
+            // Hash the password before storing it
+            $password_hash = password_hash(
+                $password,
+                PASSWORD_DEFAULT
+            );
+
+            // Insert customer into database
+            $insert_user = $conn->prepare(
+                "INSERT INTO users
+                (full_name, email, phone_number, password_hash, role)
+                VALUES (?, ?, ?, ?, 'Customer')"
+            );
+
+            $insert_user->bind_param(
+                "ssss",
+                $full_name,
+                $email,
+                $phone,
+                $password_hash
+            );
+
+            if ($insert_user->execute()) {
+
+                // Redirect successful registration to login page
+                header("Location: login.php?registered=1");
+                exit();
+
+            } else {
+
+                $errors[] = "Registration failed. Please try again.";
+            }
+
+            $insert_user->close();
+        }
+
+        $check_email->close();
+    }
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,7 +178,21 @@
 
             <!-- Feedback message (errors / success) -->
             <!-- BACKEND INTEGRATION (Faith): server registration errors can be shown here -->
-            <div id="form-message" class="form-message" role="alert"></div>
+            
+            <div id="form-message" class="form-message" role="alert">
+
+                <?php if (!empty($errors)): ?>
+
+                    <?php foreach ($errors as $error): ?>
+
+                        <p><?php echo htmlspecialchars($error); ?></p>
+
+                    <?php endforeach; ?>
+
+                <?php endif; ?>
+
+            </div>
+
 
 
             <!-- Register Form -->

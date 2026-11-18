@@ -117,6 +117,17 @@
     gap: 16px;
 }
 
+
+/* Empty state message */
+.empty-message {
+    grid-column: 1 / -1;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 25px;
+}
+
+
 .pet-card {
     padding: 18px;
 

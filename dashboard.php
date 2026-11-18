@@ -1,26 +1,65 @@
 <?php
-/*
-    BACKEND INTEGRATION (Faith):
-    This page is the customer dashboard interface only.
-    Checking that the customer is logged in, and loading the
-    customer's profile, pets and appointments from the
-    database, are handled by the backend.
 
-    Every block between "SAMPLE DATA START" and
-    "SAMPLE DATA END" is placeholder content for the visual
-    preview. Replace each block with data from the database.
+session_start();
 
-    Still to confirm with Faith:
-    - Session details: how this page knows who is logged in,
-      and where to send visitors who are not logged in.
-    - Profile fields to display (currently name, email, phone).
-    - Pet fields and how age is stored (whole years?).
-    - The PHP file the Add Pet form posts to, and its POST
-      field names (the "name" attributes below are PROPOSED).
-    - Appointment ID format, status values, date/time format,
-      and whether "Service Package" is one field or two.
-*/
+// Check whether customer is logged in
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Only customers can access this page
+if ($_SESSION["role"] !== "Customer") {
+    header("Location: admin.php");
+    exit();
+}
+
+// Connect to database
+require_once "db.php";
+
+// Retrieve actual customer information
+$user_id = $_SESSION["user_id"];
+
+$stmt = $conn->prepare(
+    "SELECT user_id, full_name, email, phone_number
+     FROM users
+     WHERE user_id = ?"
+);
+
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+
+$result = $stmt->get_result();
+$customer = $result->fetch_assoc();
+
+$stmt->close();
+
+// Retrieve pets belonging to the logged-in customer
+$petStmt = $conn->prepare(
+    "SELECT pet_id, pet_name, animal_type, breed, age, medical_notes
+     FROM pets
+     WHERE user_id = ?
+     ORDER BY created_at DESC"
+);
+
+$petStmt->bind_param("i", $user_id);
+$petStmt->execute();
+
+$petResult = $petStmt->get_result();
+$pets = $petResult->fetch_all(MYSQLI_ASSOC);
+
+$petStmt->close();
+
+// Check whether customer exists
+if (!$customer) {
+    session_destroy();
+    header("Location: login.php");
+    exit();
+}
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,7 +118,7 @@
             <span class="booking-paw" aria-hidden="true">🐾</span>
             <div class="booking-heading-text">
                 <!-- BACKEND INTEGRATION (Faith): show the customer's name here -->
-                <h1>Welcome, Sample Customer</h1>
+                <h1>Welcome, <?php echo htmlspecialchars($customer["full_name"]); ?></h1>
                 <p>
                     Manage your profile, pets and grooming appointments.
                 </p>
@@ -89,8 +128,7 @@
 
         <!-- Remove this notice once real data is connected -->
         <p class="sample-notice">
-            Preview mode: the profile, pets and appointments below are
-            sample data. They will be replaced with your real account data.
+            Your profile and pet information are connected to your account. Appointment history is currently displaying sample data.
         </p>
 
 
@@ -106,22 +144,31 @@
                 </h2>
 
                 <!-- BACKEND INTEGRATION (Faith): replace with the logged-in customer's details -->
-                <!-- SAMPLE DATA START -->
+                
                 <dl class="profile-details">
+
                     <div>
                         <dt>Full Name</dt>
-                        <dd>Sample Customer</dd>
+                        <dd>
+                            <?php echo htmlspecialchars($customer["full_name"]); ?>
+                        </dd>
                     </div>
+
                     <div>
                         <dt>Email</dt>
-                        <dd>sample.customer@example.com</dd>
+                        <dd>
+                            <?php echo htmlspecialchars($customer["email"]); ?>
+                        </dd>
                     </div>
+
                     <div>
                         <dt>Phone</dt>
-                        <dd>012-3456789</dd>
+                        <dd>
+                            <?php echo htmlspecialchars($customer["phone_number"]); ?>
+                        </dd>
                     </div>
+
                 </dl>
-                <!-- SAMPLE DATA END -->
 
             </section>
 
@@ -144,39 +191,66 @@
                     If the customer has no pets, show this instead:
                     <p class="empty-message">You have not registered any pets yet.</p>
                 -->
+
                 <div class="pet-list" id="petList">
 
-                    <!-- SAMPLE DATA START -->
-                    <article class="pet-card">
-                        <div class="pet-card-top">
-                            <h3>Buddy</h3>
-                            <span class="pet-type-tag">Dog</span>
-                        </div>
-                        <p><span class="pet-label">Breed:</span> Golden Retriever</p>
-                        <p><span class="pet-label">Age:</span> 3 years</p>
-                        <p><span class="pet-label">Medical Notes:</span> Allergic to chicken-based shampoo.</p>
-                    </article>
+                    <?php if (!empty($pets)): ?>
 
-                    <article class="pet-card">
-                        <div class="pet-card-top">
-                            <h3>Milo</h3>
-                            <span class="pet-type-tag">Cat</span>
-                        </div>
-                        <p><span class="pet-label">Breed:</span> Persian</p>
-                        <p><span class="pet-label">Age:</span> 2 years</p>
-                        <p><span class="pet-label">Medical Notes:</span> None</p>
-                    </article>
+                        <?php foreach ($pets as $pet): ?>
 
-                    <article class="pet-card">
-                        <div class="pet-card-top">
-                            <h3>Snowy</h3>
-                            <span class="pet-type-tag">Rabbit</span>
-                        </div>
-                        <p><span class="pet-label">Breed:</span> Holland Lop</p>
-                        <p><span class="pet-label">Age:</span> 1 year</p>
-                        <p><span class="pet-label">Medical Notes:</span> Nervous during nail trimming.</p>
-                    </article>
-                    <!-- SAMPLE DATA END -->
+                            <?php
+                                $medicalNotes = trim(
+                                    (string)($pet["medical_notes"] ?? "")
+                                );
+                            ?>
+
+                            <article class="pet-card">
+
+                                <div class="pet-card-top">
+
+                                    <h3>
+                                        <?php echo htmlspecialchars($pet["pet_name"]); ?>
+                                    </h3>
+
+                                    <span class="pet-type-tag">
+                                        <?php echo htmlspecialchars($pet["animal_type"]); ?>
+                                    </span>
+
+                                </div>
+
+                                <p>
+                                    <span class="pet-label">Breed:</span>
+                                    <?php echo htmlspecialchars($pet["breed"]); ?>
+                                </p>
+
+                                <p>
+                                    <span class="pet-label">Age:</span>
+                                    <?php echo (int)$pet["age"]; ?>
+                                    <?php echo ((int)$pet["age"] === 1) ? "year" : "years"; ?>
+                                </p>
+
+                                <p>
+                                    <span class="pet-label">Medical Notes:</span>
+
+                                    <?php
+                                        echo $medicalNotes !== ""
+                                            ? htmlspecialchars($medicalNotes)
+                                            : "None";
+                                    ?>
+                                </p>
+
+                            </article>
+
+                        <?php endforeach; ?>
+
+                    <?php else: ?>
+
+                        <p class="empty-message">
+                            You have not registered any pets yet.
+                            Add your first pet using the form!
+                        </p>
+
+                    <?php endif; ?>
 
                 </div>
 

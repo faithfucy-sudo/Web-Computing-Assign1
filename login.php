@@ -1,19 +1,84 @@
-<?php
-/*
-    BACKEND INTEGRATION (Faith):
-    This page is the login interface only.
-    Login processing, password checking and sessions
-    are handled by the backend.
 
-    Still to confirm with Faith:
-    - Which PHP file processes the login (form "action" below).
-    - The POST field names (the "name" attributes below are
-      PROPOSED names only).
-    - How login errors are sent back to this page
-      (e.g. a message shown inside #form-message).
-    - Where the user goes after a successful login.
-*/
+<?php
+
+// Start the PHP session
+session_start();
+
+// Connect to database
+require_once "db.php";
+
+// Store email and errors
+$email = "";
+$errors = [];
+
+// Process login form
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    // Get form data
+    $email = trim($_POST["email"] ?? "");
+    $password = $_POST["password"] ?? "";
+
+    // Validate required fields
+    if ($email === "" || $password === "") {
+        $errors[] = "Please enter your email and password.";
+    }
+
+    // Validate email format
+    if ($email !== "" && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Please enter a valid email address.";
+    }
+
+    // Continue if validation passes
+    if (empty($errors)) {
+
+        // Find customer by email
+        $stmt = $conn->prepare(
+            "SELECT user_id, full_name, email, password_hash, role
+             FROM users
+             WHERE email = ?"
+        );
+
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $user = $result->fetch_assoc();
+
+        // Verify password
+        if ($user && password_verify($password, $user["password_hash"])) {
+
+            // Regenerate session ID for security
+            session_regenerate_id(true);
+
+            // Store customer information in session
+            $_SESSION["user_id"] = $user["user_id"];
+            $_SESSION["full_name"] = $user["full_name"];
+            $_SESSION["email"] = $user["email"];
+            $_SESSION["role"] = $user["role"];
+
+            $stmt->close();
+
+            // Redirect according to account role
+            if ($user["role"] === "Admin") {
+                header("Location: admin.php");
+            } else {
+                header("Location: dashboard.php");
+            }
+
+            exit();
+
+        } else {
+
+            $errors[] = "Incorrect email address or password.";
+
+        }
+
+        $stmt->close();
+    }
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -90,7 +155,21 @@
 
             <!-- Feedback message (errors / success) -->
             <!-- BACKEND INTEGRATION (Faith): server login errors can be shown here -->
-            <div id="form-message" class="form-message" role="alert"></div>
+            
+            <div id="form-message" class="form-message" role="alert">
+
+                <?php if (isset($_GET["registered"])): ?>
+                    <p>Registration successful! Please log in.</p>
+                <?php endif; ?>
+
+                <?php if (!empty($errors)): ?>
+                    <?php foreach ($errors as $error): ?>
+                        <p><?php echo htmlspecialchars($error); ?></p>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
+            </div>
+
 
 
             <!-- Login Form -->
@@ -110,6 +189,7 @@
                             name="email"
                             placeholder="e.g. name@example.com"
                             autocomplete="email"
+                            value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>"
                         >
                         <p class="field-error" id="login-email-error"></p>
                     </div>

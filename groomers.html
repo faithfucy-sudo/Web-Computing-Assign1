@@ -352,10 +352,18 @@
             });
         }
 
+        
         function openProfile(profileId) {
             const profile = groomerProfiles[profileId];
 
             if (!profile) return;
+
+            // Pass the selected groomer to the booking page.
+            const profileBookButton = document.querySelector(".profile-book-button");
+
+            profileBookButton.href =
+                "booking.html?groomer=" + encodeURIComponent(profileId);
+
 
             previousFocus = document.activeElement;
 
